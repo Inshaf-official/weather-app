@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* =========================== KEYFRAME ANIMATIONS =========================== */
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 6px rgba(255, 255, 255, 0.08);
+    }
+}
+
+@keyframes spin-in {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes forecastSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================== BASE STYLES =========================== */
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: 600;
+}
+
+body {
+    background: url('bg.jpg');
+    width: 100%;
+    height: 100dvh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    backdrop-filter: blur(6px);
+}
+
+/* UTILITIES */
+.regular-txt {
+    font-weight: 400;
+}
+
+/* =========================== MAIN CONTAINER =========================== */
+.main-container {
+    border: solid;
+    width: 300px;
+    height: 496px;
+    z-index: 1;
+    background: linear-gradient(to top, rgb(0, 0, 0, 0.), rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    /* Container entrance */
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both, pulse-glow 4s ease-in-out 1s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================== INPUT CONTAINER =========================== */
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+    animation: fadeSlideDown 0.5s 0.2s ease both;
+}
+
+.city-input {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background: rgb(0, 0, 0, 0.15);
+    outline: none;
+    font-weight: 500;
+    padding-right: 45px;
+    transition: border 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+
+.city-input:focus {
+    border: 3px solid rgb(0, 0, 0, 0.15);
+    background: rgb(0, 0, 0, 0.22);
+    transform: scaleX(1.01);
+}
+
+.city-input::placeholder {
+    color: rgb(255, 255, 255, 0.75);
+}
+
+.search-btn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+
+.search-btn:hover {
+    transform: translateY(-50%) scale(1.25) rotate(15deg);
+    opacity: 0.9;
+}
+
+.search-btn:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+/* =========================== WEATHER INFO SECTION =========================== */
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Staggered children entrance when weather-info becomes visible */
+.weather-info .location-date-container {
+    animation: slideInLeft 0.5s 0.05s ease both;
+}
+
+.weather-info .weather-summary-container {
+    animation: fadeIn 0.5s 0.15s ease both;
+}
+
+.weather-info .weather-conditions-container {
+    animation: fadeSlideUp 0.5s 0.25s ease both;
+}
+
+.weather-info .forecast-items-container {
+    animation: fadeSlideUp 0.5s 0.35s ease both;
+}
+
+/* Location & Date */
+.location-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease;
+}
+
+.location:hover {
+    transform: translateX(3px);
+}
+
+.location span {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.location:hover span {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+/* Weather Summary */
+.weather-summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-summary-img {
+    width: 120px;
+    height: 120px;
+    animation: float 3.5s ease-in-out infinite, spin-in 0.6s 0.2s ease both;
+    filter: drop-shadow(0 8px 20px rgba(255, 255, 255, 0.15));
+    transition: filter 0.3s ease;
+}
+
+.weather-summary-img:hover {
+    filter: drop-shadow(0 12px 30px rgba(255, 255, 255, 0.3));
+    animation-play-state: paused;
+}
+
+.weather-summary-info {
+    text-align: end;
+}
+
+.temp-txt {
+    animation: slideInRight 0.5s 0.2s ease both;
+    transition: transform 0.3s ease;
+}
+
+.temp-txt:hover {
+    transform: scale(1.04);
+}
+
+.condition-txt {
+    animation: slideInRight 0.5s 0.3s ease both;
+    opacity: 0.85;
+}
+
+/* Weather Conditions */
+.weather-conditions-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.25s ease;
+}
+
+.condition-item:hover {
+    transform: scale(1.06);
+}
+
+.condition-item span {
+    font-size: 30px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.condition-item:hover span {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.condition-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================== FORECAST =========================== */
+.forecast-items-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 12px;
+}
+
+.forecast-items-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecast-items-container::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0, 0.1);
+    border-radius: 99px;
+}
+
+.forecast-items-container::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0, 0.15);
+    border-radius: 99px;
+    transition: background 0.2s;
+}
+
+.forecast-items-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0, 0.3);
+}
+
+.forecast-item {
+    min-width: 70px;
+    background: rgb(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 12px;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease, box-shadow 0.25s ease;
+    /* Staggered entrance via CSS :nth-child */
+    animation: forecastSlide 0.4s ease both;
+}
+
+.forecast-item:hover {
+    background: rgb(255, 255, 255, 0.18);
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-item:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.forecast-item-img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.forecast-item:hover .forecast-item-img {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* =========================== SECTION MESSAGE (Search / Not Found) =========================== */
+.section-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 25%;
+    animation: bounceIn 0.6s ease both;
+}
+
+.section-message img {
+    height: 180px;
+    width: fit-content;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2));
+    transition: filter 0.3s;
+}
+
+.section-message img:hover {
+    filter: drop-shadow(0 16px 32px rgba(255, 255, 255, 0.15));
+}
+
+.section-message h1 {
+    animation: fadeSlideUp 0.5s 0.2s ease both;
+}
+
+.section-message h4 {
+    animation: fadeSlideUp 0.5s 0.35s ease both;
+    opacity: 0.8;
+}
+
+@media (max-width: 420px) {
+    .main-container {
+        width: 100%;
+        height: auto;
+        min-height: 496px;
+    }
+
+    .weather-summary-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .weather-summary-info {
+        text-align: center;
+    }
+
+    .weather-conditions-container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .location-date-container {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .section-message {
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        width: 320px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-container {
+        width: 340px;
+    }
+}
